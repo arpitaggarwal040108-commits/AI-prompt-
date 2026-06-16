@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-import google.generativeai as genai
+from google import genai
 
 load_dotenv()
 
@@ -10,7 +10,7 @@ if not API_KEY:
     print("ERROR: GEMINI_API_KEY not found in .env file")
     exit()
 
-genai.configure(api_key=API_KEY)
+client = genai.Client(api_key=API_KEY)
 
 SYSTEM_PROMPT = """
 You are an Expert Study Mentor and Curriculum Designer.
@@ -50,12 +50,8 @@ Rules:
 - Do not generate long paragraphs.
 """
 
-model = genai.GenerativeModel(
-    model_name="gemini-2.0-flash",
-    system_instruction=SYSTEM_PROMPT
-)
-
-chat = model.start_chat(history=[])
+# Initialize chat history for context management
+chat_history = []
 
 print("=" * 50)
 print("AI POWERED STUDY ASSISTANT")
@@ -66,12 +62,25 @@ topic = input("\nEnter a topic to study: ").strip()
 questions_asked = 0
 
 try:
-    response = chat.send_message(
-        f"Create a study plan for {topic}"
+    # Add system prompt and user message to history
+    chat_history.append({
+        "role": "user",
+        "parts": [f"System Instructions: {SYSTEM_PROMPT}\n\nCreate a study plan for {topic}"]
+    })
+    
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=chat_history
     )
 
     print("\n")
     print(response.text)
+    
+    # Add assistant response to history
+    chat_history.append({
+        "role": "model",
+        "parts": [response.text]
+    })
 
 except Exception as e:
     print(f"Error: {e}")
@@ -88,9 +97,24 @@ while True:
         break
 
     try:
-        response = chat.send_message(user_input)
+        # Add user question to history
+        chat_history.append({
+            "role": "user",
+            "parts": [user_input]
+        })
+        
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=chat_history
+        )
 
         print("\n" + response.text + "\n")
+        
+        # Add assistant response to history
+        chat_history.append({
+            "role": "model",
+            "parts": [response.text]
+        })
 
         questions_asked += 1
 
