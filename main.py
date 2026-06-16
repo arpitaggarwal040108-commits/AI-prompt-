@@ -1,0 +1,105 @@
+import os
+from dotenv import load_dotenv
+import google.generativeai as genai
+
+load_dotenv()
+
+API_KEY = os.getenv("GEMINI_API_KEY")
+
+if not API_KEY:
+    print("ERROR: GEMINI_API_KEY not found in .env file")
+    exit()
+
+genai.configure(api_key=API_KEY)
+
+SYSTEM_PROMPT = """
+You are an Expert Study Mentor and Curriculum Designer.
+
+When the user provides a topic, generate a study roadmap.
+
+Output format:
+
+==================================================
+STUDY ROADMAP : <TOPIC>
+==================================================
+
+STEP 1 : <SUBTOPIC>
+Purpose : <ONE LINE DESCRIPTION>
+
+STEP 2 : <SUBTOPIC>
+Purpose : <ONE LINE DESCRIPTION>
+
+STEP 3 : <SUBTOPIC>
+Purpose : <ONE LINE DESCRIPTION>
+
+STEP 4 : <SUBTOPIC>
+Purpose : <ONE LINE DESCRIPTION>
+
+STEP 5 : <SUBTOPIC>
+Purpose : <ONE LINE DESCRIPTION>
+
+==================================================
+Recommended Order : 1 → 2 → 3 → 4 → 5
+==================================================
+
+Rules:
+- Keep descriptions under 20 words.
+- Follow the exact format.
+- Maintain logical learning order.
+- Do not provide unrelated information.
+- Do not generate long paragraphs.
+"""
+
+model = genai.GenerativeModel(
+    model_name="gemini-2.0-flash",
+    system_instruction=SYSTEM_PROMPT
+)
+
+chat = model.start_chat(history=[])
+
+print("=" * 50)
+print("AI POWERED STUDY ASSISTANT")
+print("=" * 50)
+
+topic = input("\nEnter a topic to study: ").strip()
+
+questions_asked = 0
+
+try:
+    response = chat.send_message(
+        f"Create a study plan for {topic}"
+    )
+
+    print("\n")
+    print(response.text)
+
+except Exception as e:
+    print(f"Error: {e}")
+    exit()
+
+print("\nYou can now ask follow-up questions.")
+print("Type 'quit' or 'exit' to end.\n")
+
+while True:
+
+    user_input = input("Ask a question: ").strip()
+
+    if user_input.lower() in ["quit", "exit"]:
+        break
+
+    try:
+        response = chat.send_message(user_input)
+
+        print("\n" + response.text + "\n")
+
+        questions_asked += 1
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+print("\n" + "=" * 50)
+print("SESSION SUMMARY")
+print("=" * 50)
+print(f"Topic Studied : {topic}")
+print(f"Questions Asked : {questions_asked}")
+print("Thank you for using Study Assistant!")
