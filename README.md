@@ -9,6 +9,16 @@ It uses **prompt engineering techniques** to generate organized learning paths, 
 ---
 
 ##  Features
+### How it works
+User enters a study topic
+        ↓
+Gemini generates roadmap
+        ↓
+User asks questions
+        ↓
+Conversation context maintained
+        ↓
+Session summary displayed
 
 ###  Topic-Based Study Roadmap
 - Accepts any study topic from the user  
