@@ -26,10 +26,15 @@ It uses **prompt engineering techniques** to generate organized learning paths, 
 - Enforces consistent response formatting  
 - Controls output structure and clarity  
 - Improves response quality using prompt engineering  
-
+## example-1
 <img width="638" height="852" alt="image" src="https://github.com/user-attachments/assets/1659cc5b-5a71-4c85-ace7-3736630b1eee" />
 
 <img width="630" height="853" alt="image" src="https://github.com/user-attachments/assets/cb4e8c71-afb5-4941-a65d-98167d4e17b0" />
+
+## example-2
+
+<img width="627" height="833" alt="image" src="https://github.com/user-attachments/assets/4084f2e4-8c12-4daf-a113-8c71e0fa4620" />
+<img width="615" height="618" alt="image" src="https://github.com/user-attachments/assets/afb7dba2-7c92-4772-a0df-db6d11e48c6e" />
 
 ###  Session Summary
 - Exit using `quit` or `exit`  
