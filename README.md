@@ -7,8 +7,7 @@
 It uses **prompt engineering techniques** to generate organized learning paths, explain concepts clearly, and maintain contextual learning during follow-up questions.
 
 ---
-![alt text](im/image.png)
-![alt text](im/image-1.png)
+
 ##  Features
 
 ###  Topic-Based Study Roadmap
