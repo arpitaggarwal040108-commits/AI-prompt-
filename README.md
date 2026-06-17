@@ -2,61 +2,114 @@
 
 ## Overview
 
-AI-Powered Study Assistant is a command-line application built using the Gemini API. The application generates a structured study roadmap for any topic and allows users to ask follow-up questions while maintaining conversation context.
+**AI-Powered Study Assistant CLI** is a command-line application powered by the **Gemini API** that helps students learn any subject through structured study roadmaps and interactive conversations.
+
+The application uses **prompt engineering techniques** to generate organized learning paths, explain concepts clearly, and answer follow-up questions while maintaining conversational context.
+
+---
 
 ## Features
 
-* Generate study roadmaps for any topic
-* Interactive question-answering session
-* Context-aware conversations
-* Session summary on exit
-* Secure API key management using `.env`
+### Topic-Based Study Roadmap
+
+* Accepts any study topic from the user.
+* Generates a structured learning roadmap.
+* Organizes subtopics in a recommended learning sequence.
+* Provides concise explanations for each topic.
+
+### Interactive Learning Session
+
+* Ask follow-up questions about any topic.
+* Maintains conversation context throughout the session.
+* Supports continuous learning and concept clarification.
+
+### Engineered System Prompt
+
+* Assigns the AI the role of an Expert Study Mentor and Curriculum Designer.
+* Enforces a consistent roadmap format.
+* Controls response structure and length.
+* Improves output quality through explicit instructions and constraints.
+
+### Session Summary
+
+* End the session using `quit` or `exit`.
+* Displays:
+
+  * Studied topic
+  * Total questions asked during the session
+
+---
 
 ## Technologies Used
 
-* Python
-* Gemini API
-* google-generativeai
-* python-dotenv
+* Python 3
+* Gemini API (`gemini-2.0-flash`)
+* Google GenAI SDK (`google-genai`)
+* Python Dotenv (`python-dotenv`)
+
+---
 
 ## Installation
 
-1. Install dependencies:
+### Clone the Repository
+
+```bash
+git clone <your-github-repository-url>
+cd AI-Study-Assistant
+```
+
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Create a `.env` file:
+### Configure Environment Variables
+
+Create a `.env` file in the project root directory:
 
 ```env
 GEMINI_API_KEY=your_api_key_here
 ```
 
-3. Run the program:
+---
+
+## Running the Application
 
 ```bash
-python study_assistant.py
+python main.py
 ```
 
 ---
 
-# Prompt Engineering Questions
+## Project Structure
 
-## 1. What role did you assign in your system prompt and why?
+```text
+AI-Study-Assistant/
+│
+├── main.py
+├── requirements.txt
+├── .env.example
+├── README.md
+└── .gitignore
+```
+![alt text](image.png)
+![alt text](image-1.png)
+---
 
-I assigned the role of **Expert Study Mentor and Curriculum Designer**. This helps the model generate structured learning paths and educational responses instead of generic answers.
+## Learning Workflow
 
-## 2. What format did you specify and how did you enforce it?
-
-I instructed the model to generate a study roadmap with ordered learning steps and short descriptions. The format was enforced by explicitly defining the structure and rules in the system prompt.
-
-## 3. What happens if you remove the system prompt entirely?
-
-Without the system prompt, responses become less consistent. The study plans may vary in structure, include unnecessary information, and follow no fixed format.
+1. Enter a study topic.
+2. Receive a structured learning roadmap.
+3. Explore subtopics in sequence.
+4. Ask follow-up questions for deeper understanding.
+5. Continue learning interactively.
+6. Exit anytime and view the session summary.
 
 ---
 
-## Conclusion
+## Author
 
-This project demonstrates the use of Prompt Engineering techniques such as role prompting, format control, response constraints, and conversational context management using the Gemini API.
+**Arpit Aggarwal**
+
+FORGETRACK 2026 – Week 03 Tech Track
