@@ -1,9 +1,4 @@
-# AI-Powered Study Assistant CLI
-
-![Project Preview](image.png)
-![Workflow Preview](image-1.png)
-
----
+# AI-Powered Study Assistant 
 
 ## 📘 Overview
 
@@ -12,7 +7,8 @@
 It uses **prompt engineering techniques** to generate organized learning paths, explain concepts clearly, and maintain contextual learning during follow-up questions.
 
 ---
-
+![alt text](image.png)
+![alt text](image-1.png)
 ##  Features
 
 ###  Topic-Based Study Roadmap
