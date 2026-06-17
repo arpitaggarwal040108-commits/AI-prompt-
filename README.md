@@ -31,6 +31,8 @@ It uses **prompt engineering techniques** to generate organized learning paths, 
 
 <img width="630" height="853" alt="image" src="https://github.com/user-attachments/assets/cb4e8c71-afb5-4941-a65d-98167d4e17b0" />
 
+---
+
 ## Example-2
 
 <img width="627" height="833" alt="image" src="https://github.com/user-attachments/assets/4084f2e4-8c12-4daf-a113-8c71e0fa4620" />
