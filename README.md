@@ -198,12 +198,6 @@ Thank you for using Study Assistant!
 ---
 
 ##  Installation
-
-### Clone the Repository
-```bash
-git clone <your-github-repository-url>
-cd AI-Study-Assistant
-
 ## Prompt Engineering Write-Up
 
 ### 1. What role did you assign in your system prompt, and why did you choose that framing?
@@ -217,3 +211,9 @@ I specified a fixed structure containing a **Goal**, **Study Roadmap**, **Recomm
 ### 3. What happens if you remove the system prompt entirely — how does the output change?
 
 Without the system prompt, the model still generates information about the topic, but the format becomes inconsistent and less organized. The response may contain long explanations, different section layouts, or missing elements such as recommended order and practice tasks, making the study plan less structured and predictable.
+
+### Clone the Repository
+```bash
+git clone <your-github-repository-url>
+cd AI-Study-Assistant
+
